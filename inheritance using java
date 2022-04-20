@@ -1,0 +1,43 @@
+package com.company;
+import java.io.*;
+import java.util.*;
+class Room{
+int length=1;
+int breadth=1;
+Room(){
+    System.out.println("just room constructor called");
+}
+Room(int x,int y){
+    length=x;
+    breadth=y;
+}
+int area(){
+    System.out.println("the area is "+length*breadth);
+    return (length*breadth);
+}
+void check(){
+    System.out.println("check function called from bedroom by extending room class");
+}
+}
+class BedRoom extends Room{
+   int height;
+    BedRoom(int a,int b,int c){
+       super(a,b);//passing a and b values to the super class as its parameter to run the area function.
+       height=c;
+   }
+   int volume(){
+        return length*breadth*height;
+   }
+}
+public class Main {
+
+    public static void main(String[] args) {
+        BedRoom room=new BedRoom(4,3,6);
+        System.out.println("the area is "+room.area());
+        System.out.println("the volume is "+room.volume());
+        room.check();
+        Room room1=new Room();
+        room1.area();
+	// write your code here
+    }
+}
