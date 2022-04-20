@@ -1,0 +1,78 @@
+package com.company;
+import java.io.*;
+import java.util.*;
+
+class MyClass{
+    int a;
+    float b;
+
+    public MyClass(int a1, int b1) {
+        System.out.println("\nMyclass parameter constructor called");
+        float sum=a1+b1;
+        this.a=a1;
+        this.b=b1;
+
+    }
+
+    public MyClass(){
+        System.out.println("\n default constructor called");
+        System.out.println(a+b);
+    }
+
+    MyClass(MyClass mc){
+        System.out.println("copy constructor tried");
+        this.a=5;
+        System.out.println("the a is "+this.a);
+        this.b=10;
+        System.out.println("the b is"+this.b);
+        int a1=mc.a;
+        float b1=mc.b;
+        System.out.print("\nthe copy constructor values passed \na is "+a1+" \nb is "+b1+"\nthis.a is "+this.a+"\nthis.b is "+this.b );
+
+    }
+    MyClass(MyClass mc,MyClass mc1){
+        System.out.println("copy constructor tried");
+        this.a=5;
+        System.out.println("the a is "+this.a);
+        this.b=10;
+        System.out.println("the b is"+this.b);
+        int a1=mc.a+mc1.a;
+        float b1=mc.b+mc1.b;
+        a=a1+this.a;
+        b=b1+this.b;
+        System.out.print("\nthe copy constructor values passed \na is "+a1+" \nb is "+b1+"\nthis.a is "+this.a+"\nthis.b is "+this.b );
+
+    }
+    void setA(int a1){
+        a=a1;
+    }
+    void setB(int b1){
+        b=b1;
+    }
+
+    int getA(){
+        return a;
+    }
+    float getB(){
+        return b;
+    }
+        }
+
+public class Main {
+
+    public static void main(String[] args) {
+       MyClass myclass=new MyClass();
+//       myclass.MyClass(12,12);
+        MyClass myclass2=new MyClass(10,20);
+        System.out.println("\ncalling copy constructor from main class");
+        MyClass myclass3=new MyClass(myclass2);
+        MyClass myclass4=new MyClass(myclass2,myclass2);
+        System.out.println("\ncalling copy constructor from main class has ended");
+        System.out.println(myclass.getA());
+        System.out.println(myclass.getB());
+       // System.out.println(myclass.MyClass());
+
+
+	// write your code here
+    }
+}
