@@ -1,0 +1,85 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min=Integer.MAX_VALUE, mx=0;
+       
+            
+        
+
+        for(int i =0;i<prices.length;i++){
+            if(min>prices[i]){
+                min = prices[i];
+               
+            }else if(min<prices[i] ){
+                
+                if(mx<prices[i] -min){
+                    mx = prices[i]-min;
+                }
+            }
+           
+           
+        }
+        return mx;
+    }
+}
+
+
+
+//         int n=prices.length;
+//             int max =0, mx=0,i,j, min;
+//             if(n>0){
+//                 min=prices[0];
+           
+//             for ( i=0;i<n-1;i++){//i=2
+//                 if(min>prices[i+1]){
+//                     min = prices[i+1];
+//                   continue;
+
+//                 }else if(min< prices[i+1]){//min=1,i=1
+//                      max =0;
+//                     for( j= i+1;j<n;j++){//j=2,3,4,5
+//                     if(max <prices[j]){
+//                         max = prices[j]; //5//6
+//                         mx = (mx<max-min)?max-min:mx;//mx=4,5
+
+//                     }else{
+//                         continue;
+//                     }
+                    
+//                 }
+//                 }
+               
+               
+//                 // if(prices[i]<max){
+//                 //     if(mx <max-prices[i]){
+//                 //     mx = max-prices[i];
+//                 // }
+//                 // }
+//                 // if(prices[i]<prices[i+1]){
+//                 //     continue;
+//                 // }
+//             }
+
+
+// //             for(int i=0;i<prices.length;i++){
+// //                 for(int j=i+1;j<prices.length;j++){
+// //                     if(prices[i]>prices[j]){
+// //                        continue;
+// //                     }else{
+// //                         if(max> prices[j]-prices[i]){
+
+// //                         }else{
+// //   max = prices[j]- prices[i];
+// //                         }
+
+                      
+// //                     }
+                    
+// //                 }
+// //             }
+//         return mx;
+//          }else{
+                
+//                 return 0;
+//             }
+        
+//     }
