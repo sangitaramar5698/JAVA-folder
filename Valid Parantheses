@@ -1,0 +1,62 @@
+class Solution {
+    public boolean isValid(String s) {
+        List<Character> brackets = new ArrayList<Character>(){{add('('); add(')'); add('{'); add('}'); add('['); add(']');}};
+        // {'(',')', '{','}','[',']'};
+        int pos =0;
+        int status =1;
+        int value;
+        String s1= "";
+        if(s.length()%2==0){
+            
+            for(int i=0;i<s.length();i++){
+                if(brackets.indexOf(s.charAt(i))%2==0){
+				// newStr.add(str.get(i));
+                s1 = s1 + s.charAt(i);
+				// info newStr;
+				pos = pos +1;
+			}else if(brackets.indexOf(s.charAt(i))%2!=0){
+                if(s1.length()>0){
+value = i-1;
+				if(value >=0){
+					// info "i-1 value = "+ brackets.indexOf(str.get(value)) + " i value "+brackets.indexOf(str.get(i));
+					// info "str.get(i-1) " + str.get(value) + " str.get(i) "+ str.get(i);
+					// info "i-1 "+ value + " i "+ i;
+					if(brackets.indexOf(s1.charAt(pos-1))== brackets.indexOf(s.charAt(i))-1){
+						
+						// newStr.remove(pos-1);
+                        s1 = s1.substring(0,pos-1);
+						
+						// info newStr;
+						pos = pos-1;	
+					}else{
+						status = 0;
+                        return false;
+						// info "Unbalanced";
+						
+					}
+				}
+                }else{
+                    return false;
+                }
+				
+			}
+                
+
+            }
+           
+
+            
+        }else{
+            return false;
+        }
+         if(s1.length()==0){
+	return true;
+}else{
+    return false;
+}
+    }
+}
+
+        
+
+
