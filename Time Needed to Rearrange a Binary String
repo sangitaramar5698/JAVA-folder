@@ -1,0 +1,55 @@
+class Solution {
+    // public int secondsToRemoveOccurrences(String s) {
+
+
+        
+    // }
+     public  int secondsToRemoveOccurrences(String color){
+        int result =0;
+        
+        int zeroCount =0;
+        int oneCount =0;
+        int firstZero =-1;
+        int firstOne=-1;
+        int pendingZero =0;
+
+        for(int i=0;i<color.length();i++){
+        if(color.charAt(i)=='0'){
+            if(firstZero <0){
+                firstZero = i;// first zero index   0
+            }
+            else if(firstZero >=0 && firstOne >=0){
+                zeroCount++;
+                if(oneCount >=zeroCount){
+                    oneCount = oneCount - zeroCount;
+                    zeroCount =0;
+                }else if(oneCount ==0){
+
+                    pendingZero++;
+//                    result++;
+                    System.out.println("result: "+ result + "no pending 1 count, but sees zero");
+                    zeroCount--;
+                }
+            }
+        }
+       else  if(color.charAt(i)== '1'){
+            if(firstZero >=0 && firstOne <0){
+                firstOne = i;  // first one index    3
+
+                result = firstOne - firstZero;
+                System.out.println("result: "+ result + " first 1");
+                oneCount++;
+            }else if(firstZero >=0  ){
+                if(pendingZero >0){
+                    result = result + pendingZero;
+                    pendingZero=0;
+                }
+                oneCount++;
+                result++;
+                System.out.println("result: "+ result + " 1 count");
+            }
+        }
+        }
+        return result;
+    }
+}
