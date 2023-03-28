@@ -1,0 +1,31 @@
+import java.util.HashMap;
+import java.util.Map.Entry;
+class Solution {
+    //start time: 2.58am
+    public int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
+        for(int i=0;i<nums.length;i++){
+            if(hm.containsValue(target - nums[i])){
+                 for(Entry<Integer, Integer> entry: hm.entrySet()) {
+                    if(entry.getValue() == target - nums[i]) {
+                        // System.out.println("The key for value " + value + " is " + entry.getKey());
+                        result[0] = entry.getKey();
+                    break;
+                    }
+                }
+                result[1] = i;
+                return result;
+            }else{
+                hm.put(i, nums[i]);
+            }
+        }
+//completion time = 3.15am
+//took 17 mins
+
+        
+
+    return result;
+
+    }
+}
