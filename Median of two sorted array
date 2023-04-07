@@ -1,0 +1,88 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        //start time : 12.15pm 7th April 2023
+int totalLength= nums1.length + nums2.length;
+
+
+int mid;
+double result =0;
+
+int n1=0;
+int n2=0;
+// int mid = totalLength/2;
+if(totalLength%2==0){
+    //even
+    
+  
+    mid = (totalLength-1)/2;
+    int[] arr= new int[mid+2];
+    // System.out.println(totalLength+"Even mid is "+ mid);
+    
+ for (int i=0; i < totalLength && i <= mid+1 ;i++){
+    if(n1 < nums1.length && n2 < nums2.length){
+if( nums1[n1] < nums2[n2] ){
+        arr[i]= nums1[n1];
+        // System.out.println("from n1"+nums1[n1]);
+        n1++;
+
+
+    }else{
+        arr[i] = nums2[n2];
+        // System.out.println("from n2"+ nums2[n2]);
+        n2++;
+    }
+    }else if(n1 < nums1.length && n2>= nums2.length){
+ arr[i]= nums1[n1];
+        // System.out.println("from n1"+nums1[n1]);
+        n1++;
+    }else{
+  arr[i] = nums2[n2];
+        // System.out.println("from n2"+ nums2[n2]);
+        n2++;
+    }
+    
+
+}
+
+return (arr[mid]+ arr[mid+1])/(double)2;
+
+}else{
+   
+    mid = totalLength/2;
+     int[] arr= new int[mid+1];
+    //  System.out.println(totalLength+"Odd mid is "+ mid);
+        for (int i=0; i < totalLength && i <= mid;i++){
+   if(n1 < nums1.length && n2 < nums2.length){
+if( nums1[n1] < nums2[n2] ){
+        arr[i]= nums1[n1];
+        // System.out.println("from n1"+nums1[n1]);
+        n1++;
+
+
+    }else{
+        arr[i] = nums2[n2];
+        // System.out.println("from n2"+ nums2[n2]);
+        n2++;
+    }
+    }else if(n1 < nums1.length && n2>= nums2.length){
+ arr[i]= nums1[n1];
+        // System.out.println("from n1"+nums1[n1]);
+        n1++;
+    }else{
+  arr[i] = nums2[n2];
+        // System.out.println("from n2"+ nums2[n2]);
+        n2++;
+    }
+
+}
+
+return  (double)arr[mid];
+
+}
+
+
+
+
+
+    }
+}
