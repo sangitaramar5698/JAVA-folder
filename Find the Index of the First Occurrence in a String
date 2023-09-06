@@ -1,0 +1,33 @@
+//. Find the Index of the First Occurrence in a String
+class Solution {
+      public int strStr(String mainString, String findString) {
+        //Start time : 11.14 am 6th Sep 2023
+        //Completion time : 11.19 am 6th Sep 2023
+        int len = mainString.length() ;
+        int flen = findString.length();
+        for(int i =0;i< len ; i++){
+            if(mainString.charAt(i) == findString.charAt(0)){
+                int count =0;
+                if(i+flen <= len) {
+
+
+                    for (int j = 0; j < flen; j++) {
+                        if (mainString.charAt(i + j) == findString.charAt(j)) {
+                            count++;
+                        }
+                    }
+                    if (count == flen) {
+                        return i;
+
+                    } else {
+                        continue;
+                    }
+                }
+            }
+
+        }
+
+        return -1;
+
+    }
+}
