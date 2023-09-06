@@ -1,0 +1,17 @@
+//Search in Rotated Sorted Array
+class Solution {
+    public int search(int[] nums, int target) {
+        //question time: 3.49
+       // code duration 3.55 to 3.57 (2 mins)
+        for(int i=0,j= nums.length-1;i<nums.length;i++,j--){
+            if(nums[i] == target){
+                return i;
+
+            }else if(nums[j]== target){
+                return j;
+                
+            }
+        }
+        return -1;
+    }
+}
