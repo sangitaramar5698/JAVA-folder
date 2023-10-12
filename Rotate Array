@@ -1,0 +1,16 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int[] nums1= new int[nums.length];
+        for(int i =0;i < nums.length;i++){
+             k = k%nums.length ;
+            nums1[k++] = nums[i];
+            
+        }
+        for(int i =0; i< nums.length;i++){
+            // System.out.println(" i= "+ i + " value= "+ nums1[i]);
+            nums[i] = nums1[i];
+        }
+        
+    }
+   
+}
