@@ -1,0 +1,28 @@
+class Solution {
+    
+    public int removeDuplicates(int[] nums) {
+        int[] nums1 = new int[nums.length];
+        int index= 0;
+    nums1[0] = nums[0];
+        
+        for(int i =1; i< nums.length;i++){
+            if(nums1[index] == nums[i]){
+             //   System.out.println("if case"+"nums1["+index+"] == nums["+i+"]"+ nums1[index] +"=="+ nums[i]);
+                
+            }else{
+                 // System.out.println("else case"+ "nums1["+index+"] == nums["+i+"]"+ nums1[index] +"!="+ nums[i]);
+                nums1[++index] = nums[i];
+                     
+            }
+        }
+
+        for(int i =0;i<nums1.length;i++){
+           nums[i] = nums1[i];
+        }
+      
+        
+        
+        return index+1;
+        
+    }
+}
