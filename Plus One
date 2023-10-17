@@ -1,0 +1,27 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+
+        int[] digits1 = new int[digits.length];
+        int[] digits2 = new int[digits.length+1];
+        int len1= digits1.length-1;
+        int len2 = digits2.length-1;
+int carry=1;
+        for(int i=digits.length-1;i>=0 ;i--){
+            int val = digits[i]+ carry;
+                digits1[len1] = val%10 ; 
+                  digits2[len2] = val%10 ; 
+                //   System.out.println(digits1[len1]+" " + digits2[len2]);
+                carry = val/10;
+                len1--;
+                len2--;
+        }
+
+        if(carry>0){
+            digits2[0] = carry;
+            return digits2;
+        }else{
+            return digits1;
+        }
+    
+    }
+}
