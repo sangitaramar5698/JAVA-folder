@@ -1,0 +1,112 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        
+        HashMap<Integer, Integer> map1 = new HashMap<>();
+        HashMap<Integer, Integer> map2 = new HashMap<>();
+        
+        for(int i=0;i< nums1.length; i++){
+            if(map1.containsKey(nums1[i])){
+                map1.put(nums1[i], map1.get(nums1[i])+1);
+                
+            }else{
+                map1.put(nums1[i],1);
+            }
+        }
+
+        for(int i=0; i< nums2.length;i++){
+             if(map2.containsKey(nums2[i])){
+                map2.put(nums2[i], map2.get(nums2[i])+1);
+                
+            }else{
+                map2.put(nums2[i],1);
+            }
+                }
+        int size =0;
+        if(nums1.length > nums2.length){
+            size = nums1.length;
+        }else{
+            size = nums2.length;
+        }
+                 int[] ar;
+        
+                int index=0;
+            System.out.println("map1");
+                if(map1.size() > map2.size() || map1.size() <= map2.size()){
+                     System.out.println("if");
+                  ar = new int[size];
+                    //loop based on map2
+                     // index =0;
+                    for(Map.Entry<Integer, Integer> entry : map2.entrySet()){
+                       Integer entryGetKey = entry.getKey();
+                        if(map1.containsKey(entryGetKey)){
+                            if(map1.get(entryGetKey) > entry.getValue()){
+                                System.out.println("entry.getValue"+ entry.getValue());
+                                for(int j =0;j< entry.getValue();j++){
+                                    ar[index++] = entryGetKey;
+                                }
+                               
+                                
+                            }else{
+                                 for(int j =0;j< map1.get(entryGetKey);j++){
+                                    ar[index++] = entryGetKey;
+                                }
+                                
+                              
+                            }
+                        }
+                    }
+                    
+                }
+        else if (map1.size() < map2.size()){
+                    //loop based on map1
+                            System.out.println("else");
+                     ar = new int[size];
+                   
+                    for(Map.Entry<Integer, Integer> entry : map1.entrySet()){
+                        if(map2.containsKey(entry.getKey())){
+                            if(map2.get(entry.getKey()) > entry.getValue()){
+                                for(int j =0;j< entry.getValue();j++){
+                                    ar[index++] = entry.getKey();
+                                }
+                                
+                            }else{
+                                 for(int j =0;j< map1.get(entry.getKey());j++){
+                                    ar[index++] = entry.getKey();
+                                }
+                            }
+                        }
+                    }
+                
+                }
+        else{
+                    //loop based on map1
+                            System.out.println("else");
+                     ar = new int[size];
+                   
+                    for(Map.Entry<Integer, Integer> entry : map1.entrySet()){
+                        if(map2.containsKey(entry.getKey())){
+                            if(map2.get(entry.getKey()) > entry.getValue()){
+                                for(int j =0;j< entry.getValue();j++){
+                                    ar[index++] = entry.getKey();
+                                }
+                                
+                            }else{
+                                 for(int j =0;j< map1.get(entry.getKey());j++){
+                                    ar[index++] = entry.getKey();
+                                }
+                            }
+                        }
+                    }
+                
+                }
+    
+        System.out.println("the final index is "+ index);
+        int[] ar1 = new int[index];
+        
+        for(int i=0;i< index;i++){
+            ar1[i] = ar[i];
+            System.out.println("value is "+ ar1[i]);
+        }
+                return ar1;
+                }
+}
