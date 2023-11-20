@@ -1,0 +1,46 @@
+class Solution {
+    public String convert(String s, int rowCount) {
+        //start time : 05:07 pm 20.11.2023
+        //end time: 06:04 pm 20.11.2023
+        int gapValue = rowCount + rowCount-2;
+        int lastIndex = s.length()-1;
+
+ String result = "";
+ if(gapValue != 0){
+
+
+   
+        for(int i =0; i< rowCount;i++){
+            for(int j =0; j<= lastIndex ;j+= gapValue){
+
+              
+                if(i==0){
+                    result = result + s.charAt(j);
+                    continue;
+                }
+                if(j+gapValue -i <= lastIndex){
+                if(j+i == j+ gapValue -i){
+                    result = result + s.charAt(j+i);
+                }else{
+               
+ result = result + s.charAt(j+i) + s.charAt(j+gapValue-i);
+                    
+                   
+                }
+                }else if(j+i <= lastIndex){
+                   result = result + s.charAt(j+i);  
+
+                }
+            }
+        }
+ }else{
+     return s;
+ }
+       
+
+
+return result;
+
+
+    }
+}
